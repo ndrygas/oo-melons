@@ -100,21 +100,27 @@ class GovernmentMelonOrder(AbstractMelonOrder):
         """Initialize melon order attributes."""
 
         super().__init__(species, qty)
+        self.passed_inspection = False
         self.shipped = False
         self.order_type = None
         self.tax = 0
 
-    def get_total(self):
-        """Calculate price, including tax."""
+    def mark_inspection(self):
+        """Marks inspection as passed."""
 
-        base_price = 5
+        self.passed_inspection = True
+
+    # def get_total(self):
+    #     """Calculate price, including tax."""
+
+    #     base_price = 5
         
-        if self.species == "Christmas Melon":
-            base_price = base_price * 1.5
+    #     if self.species == "Christmas Melon":
+    #         base_price = base_price * 1.5
 
-        total = (1 + self.tax) * self.qty * base_price
+    #     total = (1 + self.tax) * self.qty * base_price
 
-        return total
+    #     return total
 
     # def mark_shipped(self):
     #     """Record the fact than an order has been shipped."""
